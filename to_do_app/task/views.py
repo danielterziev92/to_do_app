@@ -8,3 +8,5 @@ def tasks_list(request):
     }
 
     return render(request, '', context)
+
+
