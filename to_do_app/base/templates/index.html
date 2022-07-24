@@ -1,5 +1,32 @@
 {% extends 'main.html' %}
+{% load profiles %}
 
 {% block container %}
-
+    <div class="container">
+        <div class="jumbotron parent">
+            <div class="home-slider">
+                <img src="https://cdn.pixabay.com/photo/2019/09/17/09/45/to-do-4483048_960_720.jpg"
+                     class="d-block slider" alt="Home Slider Photo">
+            </div>
+            <div class="absolute">
+                <h1 class="display-4 d-flex justify-content-center">Welcome to "To Do App"</h1>
+                <p class="lead d-flex justify-content-center">You can easily create and do your tasks</p>
+                <hr class="my-4">
+                <div class="inner cover float-end">
+                    <h1 class="cover-heading"></h1>
+                    <div class="row">
+                        {% if hp %}
+                            <p class="lead">
+                                <a href="#" class="btn btn-lg btn-secondary">Enter</a>
+                            </p>
+                        {% else %}
+                            <p class="lead">
+                                <a href="#" class="btn btn-lg btn-secondary">Create Profile</a>
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
