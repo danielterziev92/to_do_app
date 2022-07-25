@@ -24,12 +24,19 @@ class Profile(AuditEntity):
 
     GENDERS = [(x, x) for x in (MALE, FEMALE, DO_NOT_SHOW)]
 
-    first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,
-                                  validators=(MinLengthValidator(FIRST_NAME_MIN_LENGTH), only_letters_validator))
-    last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,
-                                 validators=(MinLengthValidator(LAST_NAME_MIN_LENGTH), only_letters_validator))
+    first_name = models.CharField(
+        max_length=FIRST_NAME_MAX_LENGTH,
+        validators=(MinLengthValidator(FIRST_NAME_MIN_LENGTH), only_letters_validator)
+    )
+    last_name = models.CharField(
+        max_length=LAST_NAME_MAX_LENGTH,
+        validators=(MinLengthValidator(LAST_NAME_MIN_LENGTH), only_letters_validator)
+    )
     email = models.EmailField(null=True, blank=True)
-    picture = models.ImageField(upload_to='static/image/profile', validators=(file_max_size_in_mb_validator,))
+    picture = models.ImageField(
+        upload_to='static/image/profile',
+        validators=(file_max_size_in_mb_validator,),
+        null=True, blank=True)
     day_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=max(len(x) for x, _ in GENDERS), choices=GENDERS, null=True, blank=True)
 
