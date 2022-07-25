@@ -21,7 +21,8 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0094ff;">
     {% has_profile as hp %}
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home page' %}"><img src="{% static 'image/to_do_logo.png'%}" height="40px" ></a>
+        <a class="navbar-brand" href="{% url 'home page' %}"><img src="{% static 'image/to_do_logo.png' %}"
+                                                                  height="40px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,23 +33,31 @@
                     <a class="nav-link text-white font-weight-bold" aria-current="page" href="{% url 'home page' %}">Home</a>
                 </li>
                 {% if hp %}
-                <li class="nav-item">
-                    <a class="nav-link text-white font-weight-bold" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white font-weight-bold" href="#">Pricing</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white font-weight-bold" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown link
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bold" href="{% url 'profile page' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bold" href="{% url 'dashboard page' %}">Dashboard</a>
+                    </li>
+                    {% if active_additions_nav_items %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold" href="#">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold" href="#">Tasks</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white font-weight-bold" href="#"
+                               id="navbarDropdownMenuLink" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Fast Buttons
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Crete Project</a></li>
+                                <li><a class="dropdown-item" href="#">Crete Task</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
                 {% endif %}
             </ul>
         </div>
