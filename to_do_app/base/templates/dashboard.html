@@ -1,4 +1,31 @@
 {% extends 'main.html' %}
 {% block container %}
+    <div class="row">
+        <div class="container d-flex justify-content-center mt-4 mb-4">
+            <h1>Welcome {{ profile_full_name }}</h1>
+        </div>
+    </div>
+    {% for task in tasks_list %}
+        {{ task.project }}
+    {% endfor %}
+    <div class="container col-5">
+        <p class="d-flex justify-content-center h2">You have {{ task_count }} {% if task_count == 1 %}task{% else %}
+            tasks{% endif %} to do</p>
+        <ol class="list-group list-group-numbered">
+            {% for project in projects %}
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ project.title }}</div>
+                        <ol class="list-group list-group-numbered">
+                            {% for task in tasks_list %}
+                                <li class="list-group-item">{{ task }}</li>
+                            {% endfor %}
 
+                        </ol>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">{{ task_count }}</span>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
 {% endblock %}
