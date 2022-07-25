@@ -15,15 +15,13 @@
                 <div class="inner cover float-end">
                     <h1 class="cover-heading"></h1>
                     <div class="row">
-                        {% if hp %}
-                            <p class="lead">
+                        <p class="lead">
+                            {% if hp %}
                                 <a href="#" class="btn btn-lg btn-secondary">Enter</a>
-                            </p>
-                        {% else %}
-                            <p class="lead">
+                            {% else %}
                                 <a href="#" class="btn btn-lg btn-secondary">Create Profile</a>
-                            </p>
-                        {% endif %}
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
