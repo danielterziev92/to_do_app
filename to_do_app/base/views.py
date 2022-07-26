@@ -26,20 +26,20 @@ def home_page(request):
 def dashboard_page(request):
     profile = get_profile()
     profile_full_name = f'{profile.first_name} {profile.last_name}'
-    task_count = profile.task_set.count()
-    projects = Project.objects.all()
-    # tasks_list = profile.task_set.filter(project__task__user_profile_id=profile)
-    # tasks_list = profile.task_set.all().filter(project__task__title__in=projects)
-    # tasks_list = profile.task_set.filter(project__title__in=projects)
-    tasks_list = Task.objects.filter(project__in=projects)
-    # task_count = tasks_list.count()
+    projects_set = Task.objects.prefetch_related('project__task_set').values_list('project__title', 'id', 'title',
+                                                                                  'is_completed',
+                                                                                  'due_date').order_by('project_id')
+
+    projects_list = dict()
+    for project, id, title, is_completed, due_date in projects_set:
+        info = id, title, is_completed, due_date
+        projects_list.setdefault(project, []).append(info)
+
     context = {
         'title': 'Dashboard',
         'active_additions_nav_items': True,
         'profile_full_name': profile_full_name,
-        'tasks_list': tasks_list,
-        'task_count': task_count,
-        'projects': projects,
+        'projects_list': projects_list,
     }
 
     return render(request, 'dashboard.html', context)
