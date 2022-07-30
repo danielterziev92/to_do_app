@@ -34,7 +34,7 @@ class Profile(AuditEntity):
     )
     email = models.EmailField(null=True, blank=True)
     picture = models.ImageField(
-        upload_to='static/image/profile',
+        upload_to='image/profile',
         validators=(file_max_size_in_mb_validator,),
         null=True, blank=True)
     day_of_birth = models.DateField(null=True, blank=True)
