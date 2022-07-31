@@ -8,9 +8,14 @@
             tasks{% endif %} to do</p>
         <ol class="list-group list-group-numbered">
             {% for project, tasks in projects_list.items %}
+
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold">{{ project }}</div>
+                        <div class="fw-bold">
+                            {{ project }}
+                            <a href="{% url 'project edit' tasks.0.0 %}" class="btn btn-primary btn-sm lh-sm ms-3" >Edit</a>
+                            <a href="{% url 'project delete' tasks.0.0 %}" class="btn btn-danger btn-sm lh-sm" >Delete</a>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead>
@@ -24,16 +29,16 @@
                                 <tbody>
                                 {% for task in tasks %}
                                     <tr>
-                                        <td style="width: 500px !important;"><a class="text-decoration-none text-dark"
-                                                                                href="{% url 'task info' task.0 %}">{{ task.1 }}</a>
+                                        <td style="width: 500px !important;"><a class="text-decoration-none text-dark lh-lg"
+                                                                                href="{% url 'task edit' task.1 %}">{{ task.2 }}</a>
                                         </td>
-                                        <td>{{ task.3 }}</td>
-                                        <td>{{ task.2 }}</td>
+                                        <td class="lh-lg">{{ task.4 }}</td>
+                                        <td class="lh-lg">{{ task.3 }}</td>
                                         <td>
-                                            <a href="{% url 'task info' task.0 %}" class="btn btn-primary" >Edit</a>
+                                            <a href="{% url 'task edit' task.1 %}" class="btn btn-primary" >Edit</a>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-danger" >Delete</a>
+                                            <a href="{% url 'task delete' task.1 %}" class="btn btn-danger" >Delete</a>
                                         </td>
                                     </tr>
                                 {% endfor %}
