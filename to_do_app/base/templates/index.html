@@ -17,9 +17,9 @@
                     <div class="row">
                         <p class="lead">
                             {% if hp %}
-                                <a href="#" class="btn btn-lg btn-secondary">Enter</a>
+                                <a href="{% url 'dashboard page' %}" class="btn btn-lg btn-secondary">Enter</a>
                             {% else %}
-                                <a href="#" class="btn btn-lg btn-secondary">Create Profile</a>
+                                <a href="{% url 'profile create' %}" class="btn btn-lg btn-secondary">Create Profile</a>
                             {% endif %}
                         </p>
                     </div>
